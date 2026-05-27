@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OptionsPro &#8212; MAY 28, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--bg:#0d0018;--bg-card:#130022;--purple:#7b2fff;--gold:#ffd700;--gold2:#e6a800;--green:#00e676;--red:#ff1744;--red2:#ff6060;--yellow:#ffe000;--cyan:#00e5ff;--white:#f0e8ff;--grey:#9988bb;--border:rgba(120,60,220,0.45);--border-g:rgba(255,215,0,0.45);--border-r:rgba(255,50,50,0.4);--border-gr:rgba(0,200,100,0.4);--pad:8px 10px;}
+body{background:var(--bg);font-family:'Rajdhani',sans-serif;color:var(--white);padding:6px;font-size:15px;line-height:1.3;}
+.wrap{max-width:900px;margin:0 auto;border:2px solid var(--gold);border-radius:10px;overflow:hidden;background:var(--bg);}
+.hdr{background:linear-gradient(160deg,#1c0035 0%,#2e0055 45%,#1c0035 100%);padding:10px 14px 8px;text-align:center;border-bottom:2px solid var(--gold);}
+.hdr h1{font-family:'Orbitron',sans-serif;font-size:clamp(22px,4vw,36px);font-weight:900;letter-spacing:4px;background:linear-gradient(180deg,#fff8b0 0%,#ffd700 45%,#b87800 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.1;}
+.hdr h2{font-family:'Oswald',sans-serif;font-size:clamp(12px,2vw,17px);letter-spacing:5px;color:var(--purple);margin-top:2px;}
+.hdr-meta{display:flex;justify-content:space-between;align-items:center;margin-top:8px;flex-wrap:wrap;gap:5px;}
+.exp-tag{font-family:'Oswald',sans-serif;font-size:13.5px;letter-spacing:1px;color:var(--purple);background:rgba(100,30,200,0.3);border:1px solid rgba(130,50,255,0.5);border-radius:3px;padding:5px 8px;}
+.pills{display:flex;gap:8px;}
+.pill{font-family:'Oswald',sans-serif;font-weight:700;font-size:15px;padding:4px 16px;border-radius:20px;letter-spacing:1px;}
+.pill-spx{background:rgba(0,230,118,0.12);border:1.5px solid var(--green);color:var(--green);}
+.pill-vix{background:rgba(255,224,0,0.10);border:1.5px solid var(--yellow);color:var(--yellow);}
+.body{padding:6px;display:flex;flex-direction:column;gap:5px;}
+.row{display:grid;gap:5px;}.row-2{grid-template-columns:1fr 1fr;}
+.event-banner{padding:5px 10px;text-align:center;font-family:'Oswald',sans-serif;font-size:16px;letter-spacing:2px;border-radius:4px;}
+.eb-ath{background:rgba(255,215,0,0.07);border:1px solid rgba(255,215,0,0.4);color:var(--gold);}
+.eb-fomc{background:rgba(255,70,70,0.07);border:1px solid rgba(255,70,70,0.4);color:var(--red2);}
+.card{background:var(--bg-card);border:1.5px solid var(--border);border-radius:6px;padding:var(--pad);}
+.card-gold{border-color:var(--border-g);}.card-red{border-color:var(--border-r);}.card-green{border-color:var(--border-gr);}
+.sec-title{font-family:'Oswald',sans-serif;font-size:12.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 8px;margin:-7px -9px 7px;border-radius:4px 4px 0 0;display:flex;align-items:center;gap:6px;}
+.st-purple{background:rgba(100,30,200,0.35);color:var(--purple);border-bottom:1px solid var(--border);}
+.st-gold{background:rgba(180,120,0,0.2);color:var(--gold);border-bottom:1px solid var(--border-g);}
+.st-red{background:rgba(180,20,20,0.2);color:var(--red2);border-bottom:1px solid var(--border-r);}
+.st-green{background:rgba(0,120,60,0.2);color:var(--green);border-bottom:1px solid var(--border-gr);}
+.st-cyan{background:rgba(0,100,140,0.2);color:var(--cyan);border-bottom:1px solid rgba(0,200,255,0.4);}
+.pos-gamma{font-family:'Oswald',sans-serif;font-size:13.5px;font-weight:700;letter-spacing:1px;margin-bottom:5px;}
+.check-item{display:flex;align-items:flex-start;gap:5px;font-size:13.5px;color:var(--white);margin:3px 0;}
+.result-bar{display:flex;align-items:center;gap:8px;background:rgba(0,0,0,0.35);border:1px solid rgba(180,130,0,0.35);border-radius:5px;padding:6px 9px;margin-top:7px;}
+.rt1{font-family:'Oswald',sans-serif;color:var(--yellow);font-size:16px;font-weight:700;letter-spacing:1px;}
+.rt2{color:var(--red2);font-size:12.5px;margin-top:1px;}
+.scenario{border-radius:5px;padding:8px 10px;margin:4px 0;}
+.sc-base{background:rgba(0,80,30,0.25);border:1px solid rgba(0,180,80,0.35);}
+.sc-down{background:rgba(80,0,0,0.3);border:1px solid rgba(220,40,40,0.4);}
+.sc-up{background:rgba(60,50,0,0.25);border:1px solid rgba(200,160,0,0.35);}
+.sc-title{font-family:'Oswald',sans-serif;font-size:14px;font-weight:700;letter-spacing:1.5px;margin-bottom:5px;display:flex;align-items:center;gap:5px;}
+.sc-line{font-size:13px;color:rgba(230,220,255,0.90);margin:3px 0;}.sc-line b{color:var(--white);font-weight:600;}
+.pin-zone{background:rgba(0,0,0,0.5);border:1.5px solid var(--purple);border-radius:5px;padding:7px 12px;text-align:center;flex-shrink:0;min-width:135px;}
+.pz-label{font-size:12px;color:rgba(230,220,255,0.90);font-family:'Oswald',sans-serif;letter-spacing:1px;}
+.pz-val{font-size:16px;font-weight:700;color:var(--purple);font-family:'Oswald',sans-serif;line-height:1.2;}
+.pz-sub{font-size:11px;color:rgba(200,185,240,0.85);margin-top:3px;}
+.vix-row{display:flex;justify-content:space-between;padding:3.5px 0;border-bottom:1px solid rgba(120,60,200,0.15);font-size:13px;}
+.vix-row:last-child{border-bottom:none;}.vix-lbl{color:rgba(230,220,255,0.95);font-size:13px;}
+.vix-val{font-family:'Oswald',sans-serif;font-weight:700;font-size:16px;}
+.confirms-box{background:rgba(0,0,0,0.3);border:1px solid rgba(220,80,30,0.4);border-radius:5px;padding:6px 8px;margin-top:5px;}
+.cf-label{font-family:'Oswald',sans-serif;font-size:13.5px;letter-spacing:2px;color:var(--gold2);margin-bottom:2px;}
+.cf-body{color:var(--red2);font-size:13.5px;font-weight:700;line-height:1.35;}
+.kl-slbl{font-family:'Oswald',sans-serif;font-size:13.5px;letter-spacing:2px;color:var(--purple);margin:5px 0 2px;}
+.kl-row{display:flex;justify-content:space-between;padding:3.5px 0;border-bottom:1px solid rgba(120,60,200,0.12);font-size:13px;}
+.kl-row:last-child{border-bottom:none;}.kl-lbl{color:rgba(230,220,255,0.95);font-size:13px;}
+.kl-val{font-family:'Oswald',sans-serif;font-weight:700;font-size:16px;}
+.spread-hdr{text-align:center;font-family:'Oswald',sans-serif;font-size:16px;letter-spacing:2px;padding:4px;border-radius:4px;margin-bottom:5px;font-weight:700;}
+.sh-call{background:rgba(150,20,20,0.2);border:1px solid var(--border-r);color:var(--red2);}
+.sh-put{background:rgba(0,100,50,0.2);border:1px solid var(--border-gr);color:var(--green);}
+.spread-2col{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:5px;}
+.sp-box{border-radius:5px;padding:6px 7px;font-size:12.5px;}
+.sp-prime{background:rgba(0,0,0,0.4);border:1.5px solid var(--gold);}
+.sp-safe{background:rgba(0,0,0,0.35);border:1px solid var(--border-gr);}
+.sp-lbl{font-family:'Oswald',sans-serif;font-size:10.5px;letter-spacing:1px;margin-bottom:3px;}
+.sp-strikes{font-weight:700;color:var(--white);font-size:16px;line-height:1.5;}
+.sp-note{color:var(--grey);font-size:13.5px;margin-top:2px;line-height:1.3;}
+.fomc-warn{background:rgba(255,50,50,0.07);border:1px solid rgba(255,50,50,0.35);border-radius:4px;padding:5px 8px;font-size:16px;color:var(--red2);margin-top:5px;}
+.dealer-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+.db-box{border-radius:5px;padding:6px 8px;font-size:13px;}
+.db-above{background:rgba(0,60,20,0.3);border:1px solid rgba(0,180,70,0.3);}
+.db-below{background:rgba(60,0,0,0.3);border:1px solid rgba(200,30,30,0.3);}
+.db-vix{background:rgba(20,0,50,0.35);border:1px solid rgba(100,50,200,0.3);}
+.db-label{font-family:'Oswald',sans-serif;font-size:16px;letter-spacing:1px;font-weight:700;margin-bottom:3px;}
+.db-b{font-size:12.5px;margin:2px 0;}
+.earn-row{display:flex;align-items:center;gap:5px;padding:3.5px 0;border-bottom:1px solid rgba(120,60,200,0.1);font-size:12.5px;}
+.earn-row:last-child{border-bottom:none;}
+.earn-day{font-family:'Oswald',sans-serif;color:var(--gold);font-size:13.5px;width:28px;flex-shrink:0;}
+.earn-tickers{flex:1;}
+.earn-badge{font-size:10px;padding:1px 5px;border-radius:3px;font-family:'Oswald',sans-serif;flex-shrink:0;}
+.eb-high{background:rgba(255,30,30,0.15);border:1px solid rgba(255,30,30,0.4);color:var(--red2);}
+.eb-med{background:rgba(255,220,0,0.12);border:1px solid rgba(255,220,0,0.3);color:var(--yellow);}
+.eb-ext{background:rgba(180,0,0,0.25);border:1px solid var(--red);color:var(--red);}
+.delta-2col{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+.delta-box{background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:5px;padding:7px 8px;}
+.delta-lbl{font-family:'Oswald',sans-serif;font-size:13.5px;letter-spacing:1.5px;margin-bottom:3px;}
+.delta-val{font-size:22px;font-weight:700;font-family:'Oswald',sans-serif;}
+.delta-note{font-size:16px;color:var(--grey);margin-top:2px;}
+.inv-top{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:5px;}
+.inv-box{border-radius:5px;padding:6px 8px;text-align:center;font-size:12.5px;background:rgba(60,0,0,0.25);border:1px solid var(--border-r);}
+.inv-regime{background:rgba(40,0,80,0.3);border:1px solid rgba(180,50,255,0.45);border-radius:5px;padding:6px 10px;display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.inv-lbl{font-family:'Oswald',sans-serif;font-size:10.5px;letter-spacing:1px;color:var(--red2);margin-bottom:3px;}
+.inv-strike{font-weight:700;font-size:15px;color:var(--red);display:block;margin:2px 0;}
+.inv-desc{color:var(--grey);font-size:13.5px;line-height:1.3;}
+.regime-chip{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:12px;font-family:'Oswald',sans-serif;font-size:12.5px;letter-spacing:1px;font-weight:700;background:rgba(0,180,70,0.12);border:1px solid rgba(0,180,70,0.4);color:var(--green);margin-bottom:5px;}
+.rchip-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.5s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.ole-banner{background:linear-gradient(135deg,#1a0030,#280048,#1a0030);border:2px solid var(--gold);border-radius:6px;padding:8px 14px;text-align:center;}
+.ole-title{font-family:'Oswald',sans-serif;color:var(--gold);font-size:16px;letter-spacing:3px;margin-bottom:5px;}
+.ole-body{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(13px,2vw,17px);line-height:1.7;letter-spacing:2px;}
+.bottom-row{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+.ole-left{background:linear-gradient(135deg,#1a0030,#280048);border:1.5px solid var(--border-g);border-radius:6px;padding:8px 10px;display:flex;flex-direction:column;justify-content:center;}
+.ole-left-title{font-family:'Oswald',sans-serif;color:var(--gold);font-size:16px;letter-spacing:3px;margin-bottom:6px;}
+.ole-line{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(13px,1.5vw,16px);letter-spacing:1.5px;line-height:1.8;}
+.bl-card{background:var(--bg-card);border:1.5px solid var(--border-g);border-radius:6px;padding:8px 10px;}
+.bl-title{font-family:'Oswald',sans-serif;color:var(--gold);font-size:16px;letter-spacing:2px;margin-bottom:6px;display:flex;align-items:center;gap:5px;}
+.bl-item{display:flex;align-items:flex-start;gap:6px;font-size:13px;color:var(--white);margin:3px 0;padding:4px 6px;background:rgba(0,0,0,0.2);border:1px solid rgba(120,60,200,0.15);border-radius:4px;}
+.footer{text-align:center;background:rgba(0,0,0,0.4);border-top:1.5px solid var(--border-g);padding:7px;font-family:'Oswald',sans-serif;font-size:16px;letter-spacing:2px;color:var(--gold2);}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:5px 0;}
+.tag{display:inline-block;font-size:13px;padding:1px 5px;border-radius:3px;margin:1px;font-family:'Oswald',sans-serif;letter-spacing:0.5px;}
+.tag-r{background:rgba(255,50,50,0.12);border:1px solid rgba(255,50,50,0.3);color:var(--red2);}
+.tag-p{background:rgba(120,50,255,0.15);border:1px solid rgba(120,50,255,0.35);color:var(--purple);}
+.tag-g{background:rgba(255,210,0,0.12);border:1px solid rgba(255,210,0,0.3);color:var(--gold);}
+.tag-gr{background:rgba(0,180,70,0.12);border:1px solid rgba(0,180,70,0.3);color:var(--green);}
+/* ─── SPREAD SCORECARD ───────────────────────────────────── */
+.scard{background:var(--bg-card);border:1.5px solid var(--border-g);border-radius:6px;padding:var(--pad);}
+.scard-yesterday{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px;}
+.scard-box{border-radius:5px;padding:7px 10px;font-size:13px;}
+.scard-win{background:rgba(0,180,70,0.1);border:1px solid rgba(0,180,70,0.45);}
+.scard-loss{background:rgba(180,0,0,0.15);border:1px solid rgba(255,50,50,0.45);}
+.scard-none{background:rgba(80,80,80,0.1);border:1px solid rgba(150,150,150,0.3);}
+.scard-box-label{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1.5px;margin-bottom:4px;}
+.scard-strike{font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;color:var(--white);}
+.scard-detail{font-size:16px;color:var(--grey);margin-top:3px;line-height:1.5;}
+.scard-badge{display:inline-block;font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;letter-spacing:1px;padding:2px 8px;border-radius:3px;margin-top:4px;}
+.scard-badge-win{background:rgba(0,180,70,0.2);color:var(--green);border:1px solid rgba(0,180,70,0.5);}
+.scard-badge-loss{background:rgba(180,0,0,0.2);color:var(--red2);border:1px solid rgba(255,50,50,0.5);}
+.scard-badge-none{background:rgba(80,80,80,0.15);color:var(--grey);border:1px solid rgba(150,150,150,0.3);}
+.scard-divider{height:1px;background:linear-gradient(90deg,transparent,var(--border-g),transparent);margin:7px 0;}
+.scard-rates{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:7px;}
+.scard-rate-box{background:rgba(0,0,0,0.3);border:1px solid rgba(120,60,220,0.25);border-radius:5px;padding:7px 8px;text-align:center;}
+.scard-rate-label{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1.5px;color:var(--grey);margin-bottom:4px;}
+.scard-rate-pct{font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;line-height:1;}
+.scard-rate-wl{font-size:13.5px;color:var(--grey);margin-top:3px;}
+.scard-bar-wrap{height:5px;background:rgba(0,0,0,0.35);border-radius:3px;margin-top:5px;overflow:hidden;}
+.scard-bar-fill{height:100%;border-radius:3px;}
+.scard-table{width:100%;border-collapse:collapse;font-size:12.5px;}
+.scard-table th{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1.5px;color:var(--gold);padding:4px 6px;border-bottom:1px solid var(--border-g);text-align:left;white-space:nowrap;}
+.scard-table td{padding:4px 6px;border-bottom:1px solid rgba(120,60,220,0.1);color:var(--grey);white-space:nowrap;}
+.scard-table td.sval{font-family:'Oswald',sans-serif;font-size:13px;font-weight:700;color:var(--white);}
+.scard-table td.swin{font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;color:var(--green);}
+.scard-table td.sloss{font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;color:var(--red2);}
+.scard-table td.snone{font-size:16px;color:var(--grey);}
+
+/* ─── SCORECARD EXPANDED ─────────────────────────────────── */
+.scard-rates-4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:5px;margin-bottom:7px;}
+.scard-sub-title{font-family:'Oswald',sans-serif;font-size:13.5px;letter-spacing:2px;margin:6px 0 4px;}
+.scard-table th.scard-call{color:var(--red2);}
+.scard-table th.scard-put{color:var(--green);}
+.scard-yesterday-4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:5px;margin-bottom:8px;}
+
+/* ─── SCORECARD 8-TRACK ──────────────────────────────────── */
+.scard-rates-8{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:5px;}
+.scard-track-divider{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:2px;color:var(--grey);text-align:center;padding:3px 0;border-top:1px solid rgba(120,60,220,0.2);border-bottom:1px solid rgba(120,60,220,0.2);margin:5px 0 5px;grid-column:1/-1;}
+.scard-weekly-best{display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.3);border:1px solid rgba(255,215,0,0.25);border-radius:5px;padding:5px 9px;margin-top:5px;font-size:12.5px;}
+.scard-best-lbl{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:1.5px;color:var(--gold2);}
+.scard-best-val{font-family:'Oswald',sans-serif;font-size:14px;font-weight:700;}
+
+/* ─── IRON CONDOR TIER ───────────────────────────────────── */
+:root{--cyan2:#00bcd4;--orange:#ff9800;--teal:#00897b;}
+.ic-card{background:var(--bg-card);border:1.5px solid rgba(0,188,212,0.5);border-radius:6px;padding:var(--pad);}
+.st-ic{background:rgba(0,100,130,0.25);color:var(--cyan2);border-bottom:1px solid rgba(0,188,212,0.4);}
+.ic-body{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:2px;}
+.ic-leg{border-radius:5px;padding:6px 8px;font-size:12.5px;}
+.ic-call-leg{background:rgba(80,0,0,0.3);border:1px solid rgba(255,60,60,0.35);}
+.ic-put-leg{background:rgba(0,60,20,0.3);border:1px solid rgba(0,180,70,0.35);}
+.ic-leg-lbl{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:1.5px;margin-bottom:3px;}
+.ic-strikes{font-family:'Oswald',sans-serif;font-size:15px;font-weight:700;color:var(--white);line-height:1.4;}
+.ic-note{color:var(--grey);font-size:12px;margin-top:3px;line-height:1.3;}
+.ic-summary{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-top:5px;}
+.ic-stat{background:rgba(0,0,0,0.3);border:1px solid rgba(0,188,212,0.2);border-radius:4px;padding:5px 7px;text-align:center;}
+.ic-stat-lbl{font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:1px;color:var(--grey);margin-bottom:2px;}
+.ic-stat-val{font-family:'Oswald',sans-serif;font-size:15px;font-weight:700;color:var(--cyan2);}
+.ic-gate{display:flex;gap:5px;margin-top:5px;flex-wrap:wrap;}
+.ic-gate-chip{font-family:'Oswald',sans-serif;font-size:10.5px;padding:2px 7px;border-radius:3px;letter-spacing:0.5px;}
+.ic-gate-ok{background:rgba(0,180,70,0.12);border:1px solid rgba(0,180,70,0.35);color:var(--green);}
+.ic-gate-warn{background:rgba(255,150,0,0.12);border:1px solid rgba(255,150,0,0.35);color:var(--orange);}
+.ic-gate-block{background:rgba(255,30,30,0.12);border:1px solid rgba(255,30,30,0.35);color:var(--red2);}
+.ic-no-trade{background:rgba(60,60,60,0.2);border:1px dashed rgba(150,150,150,0.3);border-radius:5px;padding:8px;text-align:center;font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1px;color:var(--grey);}
+
+/* ─── 0DTE SCALP TIER ────────────────────────────────────── */
+.dte-card{background:var(--bg-card);border:1.5px solid rgba(255,152,0,0.55);border-radius:6px;padding:var(--pad);}
+.st-dte{background:rgba(120,60,0,0.28);color:var(--orange);border-bottom:1px solid rgba(255,152,0,0.4);}
+.dte-status-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.dte-status-chip{font-family:'Oswald',sans-serif;font-size:12px;padding:3px 10px;border-radius:12px;letter-spacing:1px;font-weight:700;}
+.dte-active{background:rgba(255,152,0,0.15);border:1px solid rgba(255,152,0,0.5);color:var(--orange);}
+.dte-inactive{background:rgba(80,80,80,0.15);border:1px solid rgba(150,150,150,0.3);color:var(--grey);}
+.dte-pulse{width:7px;height:7px;border-radius:50%;background:var(--orange);animation:pulse 1.2s ease-in-out infinite;flex-shrink:0;}
+.dte-body{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+.dte-box{border-radius:5px;padding:6px 8px;font-size:12.5px;background:rgba(0,0,0,0.35);border:1px solid rgba(255,152,0,0.2);}
+.dte-box-lbl{font-family:'Oswald',sans-serif;font-size:10.5px;letter-spacing:1.5px;color:var(--orange);margin-bottom:3px;}
+.dte-val{font-family:'Oswald',sans-serif;font-size:15px;font-weight:700;color:var(--white);line-height:1.4;}
+.dte-note{color:var(--grey);font-size:12px;margin-top:2px;}
+.dte-rules{margin-top:5px;display:flex;flex-direction:column;gap:3px;}
+.dte-rule{display:flex;align-items:flex-start;gap:5px;font-size:12.5px;color:rgba(230,220,255,0.85);padding:3px 6px;background:rgba(255,152,0,0.05);border-left:2px solid rgba(255,152,0,0.35);border-radius:0 3px 3px 0;}
+.dte-hard-stop{background:rgba(255,30,30,0.08);border:1px solid rgba(255,30,30,0.4);border-radius:4px;padding:5px 8px;margin-top:5px;text-align:center;font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:1px;color:var(--red2);}
+.dte-no-trade{background:rgba(60,60,60,0.2);border:1px dashed rgba(150,150,150,0.3);border-radius:5px;padding:8px;text-align:center;font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1px;color:var(--grey);}
+
+/* ─── WEEKLY DEBIT SPREAD LAYER ──────────────────────────── */
+.wds-card{background:var(--bg-card);border:1.5px solid rgba(0,137,123,0.55);border-radius:6px;padding:var(--pad);}
+.st-wds{background:rgba(0,60,50,0.28);color:#4db6ac;border-bottom:1px solid rgba(0,137,123,0.4);}
+.wds-bias-row{display:flex;align-items:center;gap:6px;margin-bottom:5px;}
+.wds-bias-chip{font-family:'Oswald',sans-serif;font-size:12px;padding:3px 10px;border-radius:12px;letter-spacing:1px;font-weight:700;}
+.wds-bull{background:rgba(0,180,70,0.12);border:1px solid rgba(0,180,70,0.4);color:var(--green);}
+.wds-bear{background:rgba(180,0,0,0.12);border:1px solid rgba(255,50,50,0.4);color:var(--red2);}
+.wds-neutral{background:rgba(80,80,80,0.15);border:1px solid rgba(150,150,150,0.3);color:var(--grey);}
+.wds-body{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+.wds-box{border-radius:5px;padding:6px 8px;font-size:12.5px;}
+.wds-call-box{background:rgba(0,60,20,0.3);border:1px solid rgba(0,180,70,0.3);}
+.wds-put-box{background:rgba(60,0,0,0.3);border:1px solid rgba(255,50,50,0.3);}
+.wds-box-lbl{font-family:'Oswald',sans-serif;font-size:10.5px;letter-spacing:1.5px;margin-bottom:3px;}
+.wds-strikes{font-family:'Oswald',sans-serif;font-size:15px;font-weight:700;color:var(--white);line-height:1.4;}
+.wds-note{color:var(--grey);font-size:12px;margin-top:2px;line-height:1.3;}
+.wds-metrics{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-top:5px;}
+.wds-met-box{background:rgba(0,0,0,0.3);border:1px solid rgba(0,137,123,0.2);border-radius:4px;padding:5px 7px;text-align:center;}
+.wds-met-lbl{font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:1px;color:var(--grey);margin-bottom:2px;}
+.wds-met-val{font-family:'Oswald',sans-serif;font-size:14px;font-weight:700;color:#4db6ac;}
+.wds-trigger{background:rgba(0,60,50,0.25);border:1px solid rgba(0,137,123,0.3);border-radius:4px;padding:5px 8px;margin-top:5px;font-size:12.5px;color:rgba(230,220,255,0.85);line-height:1.4;}
+.wds-no-trade{background:rgba(60,60,60,0.2);border:1px dashed rgba(150,150,150,0.3);border-radius:5px;padding:8px;text-align:center;font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1px;color:var(--grey);}
+
+/* ─── BUTTERFLY SETUPS ───────────────────────────────────── */
+.bfly-card{background:var(--bg-card);border:1.5px solid rgba(180,80,255,0.5);border-radius:6px;padding:var(--pad);}
+.st-bfly{background:rgba(80,0,150,0.25);color:#ce93d8;border-bottom:1px solid rgba(180,80,255,0.4);}
+.bfly-diagram{display:flex;align-items:center;justify-content:center;gap:3px;margin:6px 0;flex-wrap:wrap;}
+.bfly-wing{background:rgba(180,80,255,0.08);border:1px solid rgba(180,80,255,0.3);border-radius:4px;padding:4px 8px;text-align:center;min-width:70px;}
+.bfly-body-strike{background:rgba(180,80,255,0.18);border:1px solid rgba(180,80,255,0.55);border-radius:4px;padding:5px 10px;text-align:center;min-width:80px;}
+.bfly-connector{color:rgba(180,80,255,0.5);font-family:'Oswald',sans-serif;font-size:14px;font-weight:700;padding:0 2px;}
+.bfly-strike-lbl{font-family:'Oswald',sans-serif;font-size:9px;letter-spacing:1px;color:var(--grey);margin-bottom:2px;}
+.bfly-strike-val{font-family:'Oswald',sans-serif;font-size:14px;font-weight:700;color:var(--white);}
+.bfly-body-lbl{font-family:'Oswald',sans-serif;font-size:9px;letter-spacing:1px;color:#ce93d8;margin-bottom:2px;}
+.bfly-body-val{font-family:'Oswald',sans-serif;font-size:15px;font-weight:700;color:#ce93d8;}
+.bfly-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:5px;}
+.bfly-met-box{background:rgba(0,0,0,0.3);border:1px solid rgba(180,80,255,0.2);border-radius:4px;padding:5px 7px;text-align:center;}
+.bfly-met-lbl{font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:1px;color:var(--grey);margin-bottom:2px;}
+.bfly-met-val{font-family:'Oswald',sans-serif;font-size:13px;font-weight:700;color:#ce93d8;}
+.bfly-condition{background:rgba(80,0,150,0.15);border:1px solid rgba(180,80,255,0.25);border-radius:4px;padding:5px 8px;margin-top:5px;font-size:12.5px;color:rgba(230,220,255,0.85);line-height:1.4;}
+.bfly-no-trade{background:rgba(60,60,60,0.2);border:1px dashed rgba(150,150,150,0.3);border-radius:5px;padding:8px;text-align:center;font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1px;color:var(--grey);}
+
+/* ─── EXPANSION SECTION HEADER ───────────────────────────── */
+.expansion-hdr{background:linear-gradient(135deg,rgba(0,0,0,0.4),rgba(30,0,60,0.5));border:1px solid rgba(120,60,220,0.4);border-radius:6px;padding:6px 12px;display:flex;align-items:center;justify-content:space-between;margin-bottom:0;}
+.expansion-hdr-title{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:3px;color:var(--purple);font-weight:700;}
+.expansion-hdr-sub{font-family:'Oswald',sans-serif;font-size:10.5px;letter-spacing:1px;color:var(--grey);}
+.exp-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="hdr">
+  <div style="display:flex;justify-content:center;align-items:center;margin-bottom:4px;">
+    <svg width="72" height="34" viewBox="0 0 200 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="bull-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00ff88"/><stop offset="100%" stop-color="#007744"/></linearGradient>
+        <linearGradient id="bear-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ff5555"/><stop offset="100%" stop-color="#880022"/></linearGradient>
+        <filter id="gs"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <g filter="url(#gs)">
+        <path d="M4 38 Q2 28 6 22 Q8 28 6 34" fill="#007744" opacity="0.8"/>
+        <path d="M8 55 Q6 42 14 34 Q22 26 38 28 Q52 28 58 36 Q64 44 60 56 Q54 66 40 68 Q22 70 8 55Z" fill="url(#bull-g)" opacity="0.9"/>
+        <path d="M56 40 Q62 32 68 30 Q76 28 80 34 Q84 40 80 50 Q76 58 68 60 Q60 60 56 52Z" fill="url(#bull-g)" opacity="0.95"/>
+        <path d="M68 30 Q72 18 78 12 Q74 20 70 28" fill="#00ff88"/>
+        <path d="M76 32 Q82 22 86 16 Q80 24 76 32" fill="#00cc66"/>
+        <ellipse cx="82" cy="46" rx="8" ry="6" fill="url(#bull-g)" opacity="0.95"/>
+        <circle cx="80" cy="44" r="1.8" fill="#003322"/><circle cx="84" cy="48" r="1.8" fill="#003322"/>
+        <circle cx="70" cy="36" r="3.5" fill="#003322"/><circle cx="71" cy="35" r="1.5" fill="#00ff88" opacity="0.6"/>
+        <path d="M52 66 Q50 76 48 88 L54 88 Q56 78 56 68Z" fill="url(#bull-g)"/>
+        <path d="M42 68 Q40 78 38 88 L44 88 Q46 78 46 70Z" fill="url(#bull-g)"/>
+        <path d="M20 66 Q18 76 16 88 L22 88 Q24 78 24 68Z" fill="url(#bull-g)" opacity="0.85"/>
+        <path d="M10 58 Q8 68 6 80 L12 80 Q14 70 14 60Z" fill="url(#bull-g)" opacity="0.75"/>
+      </g>
+      <g filter="url(#gs)">
+        <path d="M196 42 Q198 32 194 26 Q192 32 194 38" fill="#880022" opacity="0.8"/>
+        <path d="M192 58 Q194 44 186 36 Q178 28 162 28 Q146 28 140 38 Q134 48 138 60 Q144 72 162 74 Q182 74 192 58Z" fill="url(#bear-g)" opacity="0.9"/>
+        <path d="M142 44 Q136 36 128 34 Q120 32 116 40 Q112 48 116 56 Q120 64 130 64 Q140 62 144 54Z" fill="url(#bear-g)" opacity="0.95"/>
+        <circle cx="122" cy="28" r="10" fill="url(#bear-g)" opacity="0.9"/><circle cx="122" cy="28" r="5" fill="#cc2233" opacity="0.7"/>
+        <circle cx="136" cy="26" r="9" fill="url(#bear-g)" opacity="0.85"/><circle cx="136" cy="26" r="4" fill="#cc2233" opacity="0.6"/>
+        <ellipse cx="114" cy="50" rx="9" ry="7" fill="url(#bear-g)" opacity="0.95"/>
+        <ellipse cx="112" cy="46" rx="4" ry="3" fill="#330011"/>
+        <circle cx="110" cy="47" r="1.5" fill="#550022"/><circle cx="114" cy="48" r="1.5" fill="#550022"/>
+        <circle cx="124" cy="40" r="3.5" fill="#330011"/><circle cx="123" cy="39" r="1.5" fill="#ff5555" opacity="0.6"/>
+        <path d="M144 70 Q146 80 148 88 L142 88 Q140 78 140 72Z" fill="url(#bear-g)"/>
+        <path d="M154 72 Q156 82 158 88 L152 88 Q150 78 150 74Z" fill="url(#bear-g)"/>
+        <path d="M174 70 Q176 80 178 88 L172 88 Q170 78 170 72Z" fill="url(#bear-g)" opacity="0.85"/>
+        <path d="M186 62 Q188 72 190 82 L184 82 Q182 72 182 64Z" fill="url(#bear-g)" opacity="0.75"/>
+      </g>
+      <g opacity="0.7">
+        <line x1="100" y1="44" x2="96" y2="36" stroke="#ffd700" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="100" y1="44" x2="104" y2="36" stroke="#ffd700" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="100" y1="44" x2="100" y2="34" stroke="#ffd700" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="100" y1="44" x2="94" y2="42" stroke="#ffd700" stroke-width="1" stroke-linecap="round"/>
+        <line x1="100" y1="44" x2="106" y2="42" stroke="#ffd700" stroke-width="1" stroke-linecap="round"/>
+      </g>
+    </svg>
+  </div>
+  <h1>OPTIONSPRO TRADES</h1>
+  <h2>SPX GEX + VIX ANALYSIS</h2>
+  <div class="hdr-meta">
+    <span class="exp-tag">MAY 28, 2026 EXPIRATION (SPX)</span>
+    <div class="pills">
+      <span class="pill pill-spx">SPX SPOT: ~7,520.36</span>
+      <span class="pill pill-vix">VIX: ~16.33</span>
+    </div>
+    <span class="exp-tag">MAY 28, 2026 EXPIRATION (VIX)</span>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="body">
+
+<!-- BANNERS -->
+<div class="event-banner eb-ath">💚 SQUEEZE CONDITIONS: Call Wall at 7600 is acting as magnet. Expect consolidation/pinning into Wed close.</div>
+<div class="event-banner eb-fomc">⚠️ CATALYST THURSDAY: PCE + GDP @ 8:30 a.m. ET May 28. Both high-impact. Be ready for gap and vol spike if surprise.</div>
+
+<!-- PIN ZONE BANNER -->
+<div style="max-width:900px;margin:4px auto;background:rgba(0,0,0,0.45);border:1.5px solid var(--purple);border-radius:6px;padding:8px 16px;text-align:center;">
+  <div style="font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:3px;color:var(--purple);margin-bottom:3px;">&#128246; PIN ZONE</div>
+  <div style="font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;color:var(--white);letter-spacing:1px;line-height:1.2;">7485–7600</div>
+  <div style="font-size:12px;color:rgba(200,185,240,0.85);margin-top:4px;">Dealers hedging between put wall and call wall creates tight pinning zone; gamma is highest here</div>
+</div>
+
+<!-- ROW 1: POSITIONING + INTRADAY -->
+<div class="row row-2">
+  <div class="card card-gold">
+    <div class="sec-title st-gold">&#129504; SUMMARY OF POSITIONING</div>
+    <div class="pos-gamma"><span style="color:var(--green);">LONG GAMMA ABOVE</span> / <span style="color:var(--red2);">SHORT GAMMA BELOW</span></div>
+    <div class="check-item">SPX in POSITIVE GAMMA — dealers buying dips, selling rallies (mean-reversion bias)</div>
+    <div class="check-item">Call Wall 7600 is peak GEX strike and price magnet; expect consolidation/pinning here if approached</div>
+    <div class="check-item">Put Wall 7485 provides structural support; below Zero Gamma 7339 triggers regime flip to negative</div>
+    <div class="check-item">CCS PRIME (7580) and PCS PRIME (7465) both sitting OTM — tight window favors credit spreads</div>
+    <div class="result-bar">
+      <span style="font-size:22px;">&#9878;&#65039;</span>
+      <div>
+        <div class="rt1">Yesterday: CCS PRIME 7580 strike, CCS SAFE 7600, PCS PRIME 7465, PCS SAFE 7445 — all expired OTM, full credits retained</div>
+        <div class="rt2">Scorecard: 7W–0L across all four spreads | Consistent wins in positive gamma regime</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="sec-title st-purple">&#128302; EXPECTED INTRADAY OUTLOOK</div>
+    <div class="scenario sc-base">
+      <div class="sc-title" style="color:var(--green);">&#128994; BASE CASE <span style="color:var(--grey);font-size:13px;">(MOST LIKELY)</span></div>
+      <div class="sc-line">&#8226; Range: <b>7520–7590</b></div>
+      <div class="sc-line">&#8226; Drift toward <b>Slight bullish bias — price near support, above zero gamma; 0DTE gamma concentration near ATM calls</b></div>
+      <div class="sc-line" style="font-size:16px;margin-top:2px;">Range-bound intraday is high-confidence play given positive gamma. Watch for break above 7600 (resistance) or below 7485 (support flip).</div>
+    </div>
+    <div class="scenario sc-down">
+      <div class="sc-title" style="color:var(--red2);">&#128308; DOWNSIDE SCENARIO</div>
+      <div class="sc-line">&#8226; Break below <b>Below 7485 Put Wall</b></div>
+      <div class="sc-line">&#8226; Move to <b>7339.27 Zero Gamma (regime flip trigger)</b></div>
+      <div class="sc-line">&#8226; Trigger: <b>Large institutional selling, gap down at open, or macro surprise (PCE higher-than-expected Thursday morning)</b></div>
+    </div>
+    <div class="scenario sc-up">
+      <div class="sc-title" style="color:var(--gold);">&#128992; UPSIDE SCENARIO</div>
+      <div class="sc-line">&#8226; Test <b>7600 Call Wall (price magnet) → 7670 (invalidation level)</b></div>
+      <div class="sc-line">&#8226; Requires <b>Strong bullish close, call buying flow, or positive macro data on Thursday PCE/GDP</b></div>
+    </div>
+  </div>
+</div>
+
+<!-- ROW 2: VIX + KEY LEVELS | OTM SPREADS -->
+<div class="row row-2">
+  <div style="display:flex;flex-direction:column;gap:5px;">
+    <div class="card">
+      <div class="sec-title st-cyan">&#128293; VIX CONFIRMATION <span style="font-size:10.5px;color:var(--grey);letter-spacing:0;">(STRENGTHENS THE READ)</span></div>
+      <div class="regime-chip"><div class="rchip-dot"></div> POSITIVE GAMMA — Volatility Suppression Regime</div>
+      <div style="margin-top:5px;padding:3px 6px;background:rgba(0,0,0,0.25);border-radius:4px;"><span style="font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:1px;color:var(--green);">&#9660; DAMPENED</span><span style="font-size:11.5px;color:var(--grey);margin-left:6px;">Dealer gamma suppresses moves — low realized vol expected</span></div>
+      <div class="vix-row"><span class="vix-lbl">VIX official close May 27:</span><span class="vix-val" style="color:var(--green);">16.33</span></div>
+      <div class="vix-row"><span class="vix-lbl">VIX Call Wall (Ceiling):</span><span class="vix-val" style="color:var(--yellow);">22</span></div>
+      <div class="vix-row"><span class="vix-lbl">VIX Volatility Trigger:</span><span class="vix-val" style="color:var(--cyan);">16</span></div>
+      <div class="vix-row"><span class="vix-lbl">VIX 16.33</span><span class="vix-val" style="color:var(--red2);">Low-to-Normal volatility; positive gamma confirms muted intraday swings</span></div>
+      <div class="confirms-box">
+        <div class="cf-label">&#127919; CONFIRMS:</div>
+        <div class="cf-body">Positive GEX + VIX 16.33 + narrow put/call spread (9.9K vs 112.9K OI) = stable, range-bound session. Gamma helps traders fade moves into walls.</div>
+      </div>
+    </div>
+
+    <div class="card card-gold">
+      <div class="sec-title st-gold">&#127919; KEY LEVELS <span style="font-size:10.5px;color:var(--grey);letter-spacing:0;">(THE ONES THAT MATTER)</span></div>
+      <div class="kl-slbl">SPX LEVELS</div>
+      <div class="kl-row"><span class="kl-lbl">&#11088; Call Wall (Resistance)</span><span class="kl-val" style="color:var(--gold);">7600 (112.9K OI)</span></div>
+      <div class="kl-row"><span class="kl-lbl">&#127919; Spot Price (May 27 close)</span><span class="kl-val" style="color:var(--green);">7,520.36</span></div>
+      <div class="kl-row"><span class="kl-lbl">&#128205; Key Support #1</span><span class="kl-val" style="color:var(--white);">7485</span></div>
+      <div class="kl-row"><span class="kl-lbl">&#128205; Key Support #2</span><span class="kl-val" style="color:var(--white);">7339</span></div>
+      <div class="kl-row"><span class="kl-lbl">&#9889; Zero Gamma / Gamma Flip</span><span class="kl-val" style="color:var(--red);">7339.27</span></div>
+      <div class="kl-row"><span class="kl-lbl">&#128737; Put Wall (Major Floor)</span><span class="kl-val" style="color:var(--cyan);">7485 (9.9K OI)</span></div>
+      <div class="kl-row" style="flex-direction:column;align-items:flex-start;padding:5px 0;"><span class="kl-lbl" style="font-size:11.5px;letter-spacing:1px;">&#9698; GEX IMBALANCE RATIO</span><div style="display:flex;align-items:center;gap:6px;margin-top:3px;"><span style="font-family:'Oswald',sans-serif;font-size:11px;color:var(--red2);">CALL 65%</span><div style="flex:1;height:6px;background:rgba(0,0,0,0.3);border-radius:3px;overflow:hidden;"><div style="width:65%;height:100%;background:linear-gradient(90deg,var(--red2),rgba(255,96,96,0.6));"></div></div><span style="font-family:'Oswald',sans-serif;font-size:11px;color:var(--grey);">PUT 35%</span></div></div>
+      <div class="kl-slbl" style="margin-top:5px;">VIX LEVELS</div>
+      <div class="kl-row"><span class="kl-lbl">&#128293; VIX Call Wall (Ceiling)</span><span class="kl-val" style="color:var(--yellow);">22</span></div>
+      <div class="kl-row"><span class="kl-lbl">&#9889; VIX Volatility Trigger</span><span class="kl-val" style="color:var(--cyan);">16</span></div>
+      <div class="kl-row"><span class="kl-lbl">&#127919; Current VIX</span><span class="kl-val" style="color:var(--purple);">~16.33</span></div>
+    </div>
+  </div>
+
+  <div class="card card-red">
+    <div class="sec-title st-red">&#128176; OTM CREDIT SPREADS <span style="font-size:10.5px;color:var(--grey);letter-spacing:0;">(HIGH PROBABILITY)</span></div>
+    <div class="spread-hdr sh-call">&#8679; CALL CREDIT SPREADS (PRIMARY EDGE)</div>
+    <div class="spread-2col">
+      <div class="sp-box sp-prime">
+        <div class="sp-lbl" style="color:var(--gold);">&#11088; PRIME (PRIMARY TRADE)</div>
+        <div class="sp-strikes">7580 / 7585 <span style='color:var(--grey);font-size:10px;'>(5-WIDE)</span><br>7580 / 7590 <span style='color:var(--grey);font-size:10px;'>(10-WIDE)</span></div>
+        <div class="sp-note">7580 short — 59.6pts above spot. Invalidation 7670 is wide margin; 0.79% OTM is textbook PRIME placement.</div>
+      </div>
+      <div class="sp-box sp-safe">
+        <div class="sp-lbl" style="color:var(--green);">&#128737;&#65039; SAFE (LOW VOL / EVENT DAYS)</div>
+        <div class="sp-strikes">7605 / 7610 <span style='color:var(--grey);font-size:10px;'>(5-WIDE)</span><br>7605 / 7615 <span style='color:var(--grey);font-size:10px;'>(10-WIDE)</span></div>
+        <div class="sp-note">7600 short — call wall; extremely sticky resistance. 7605 is deep ITM by EOW if no rally.</div>
+      </div>
+    </div>
+    <div class="spread-hdr sh-put">&#8681; PUT CREDIT SPREADS (DEFENSIVE ONLY)</div>
+    <div class="spread-2col">
+      <div class="sp-box sp-prime">
+        <div class="sp-lbl" style="color:var(--gold);">&#11088; PRIME (PRIMARY TRADE)</div>
+        <div class="sp-strikes">7465 / 7460 <span style='color:var(--grey);font-size:10px;'>(5-WIDE)</span><br>7465 / 7455 <span style='color:var(--grey);font-size:10px;'>(10-WIDE)</span></div>
+        <div class="sp-note">7465 short — 55.4pts below spot. Invalidation 7370 (zero gamma). 0.74% OTM is ideal PRIME zone.</div>
+      </div>
+      <div class="sp-box sp-safe">
+        <div class="sp-lbl" style="color:var(--green);">&#128737;&#65039; SAFE (LOW VOL / EVENT DAYS)</div>
+        <div class="sp-strikes">7445 / 7440 <span style='color:var(--grey);font-size:10px;'>(5-WIDE)</span><br>7445 / 7435 <span style='color:var(--grey);font-size:10px;'>(10-WIDE)</span></div>
+        <div class="sp-note">7445 short — well below put wall (7485). Extra cushion from dips; far OTM premium decay.</div>
+      </div>
+    </div>
+    <div class="fomc-warn">&#9733; PRIME 5-wide: ~$0.82&#8211;$1.12 credit &nbsp;|&nbsp; PRIME 10-wide: ~$1.31&#8211;$1.79 credit (2&#215; max risk) &nbsp;|&nbsp; SAFE 5-wide: ~$0.46&#8211;$0.66 credit &nbsp;|&nbsp; NO TRADE if credit below $0.25</div>
+  </div>
+</div>
+
+<!-- ══ V2 STRATEGY EXPANSIONS ══════════════════════════════ -->
+<div class="expansion-hdr">
+  <span class="expansion-hdr-title">&#9889; V2 STRATEGY EXPANSIONS</span>
+  <span class="expansion-hdr-sub">IRON CONDOR &nbsp;&#8226;&nbsp; 0DTE SCALP &nbsp;&#8226;&nbsp; WEEKLY DEBIT &nbsp;&#8226;&nbsp; BUTTERFLY</span>
+</div>
+
+<!-- ROW A: IRON CONDOR | 0DTE SCALP -->
+<div class="exp-grid-2">
+
+  <!-- IRON CONDOR -->
+  <div class="ic-card">
+    <div class="sec-title st-ic">&#9682; IRON CONDOR <span style="font-size:10.5px;color:var(--grey);letter-spacing:0;">(COMBINED LEGS)</span></div>
+    <div class="ic-gate">
+      <span class="ic-gate-chip ic-gate-ok">IV RANK: IV RANK: 35</span>
+      <span class="ic-gate-chip ic-gate-block">CATALYST RISK &#9888;</span>
+      <span class="ic-gate-chip ic-gate-warn">&#9888; HOLD</span>
+    </div>
+    <div style="margin-top:6px;">
+      <div class="ic-no-trade">&#8212; NO TRADE &#8212;<br><span style="font-size:11px;color:var(--grey);">Catalyst within expiry window — deploy gates blocked</span></div>
+    </div>
+  </div>
+
+  <!-- 0DTE SCALP -->
+  <div class="dte-card">
+    <div class="sec-title st-dte">&#9889; 0DTE SCALP <span style="font-size:10.5px;color:var(--grey);letter-spacing:0;">(SAME-DAY EXPIRY)</span></div>
+    <div class="dte-status-row">
+      <div class="dte-pulse" style="background:var(--grey);"></div>
+      <span class="dte-status-chip dte-inactive">INACTIVE TODAY</span>
+      <span style="font-size:11.5px;color:var(--grey);">0DTE trading is possible Thursday/Friday, but Thursday morning gap risk is too high. 0DTE scalps work best on normal sessions (Tue/Wed). Skip tomorrow, scalp Wed intraday only.</span>
+    </div>
+    <div style="margin-top:2px;">
+      <div class="dte-no-trade">&#8212; NO 0DTE TODAY &#8212;<br><span style="font-size:11px;color:var(--grey);">0DTE trading is possible Thursday/Friday, but Thursday morning gap risk is too high. 0DTE scalps work best on normal sessions (Tue/Wed). Skip tomorrow, scalp Wed intraday only.</span></div>
+    </div>
+    <div class="dte-hard-stop">&#9888; HARD STOP: CLOSE ALL POSITIONS BY 3:30PM ET REGARDLESS OF P&amp;L</div>
+  </div>
+
+</div>
+
+<!-- ROW B: WEEKLY DEBIT | BUTTERFLY -->
+<div class="exp-grid-2">
+
+  <!-- WEEKLY DEBIT SPREAD -->
+  <div class="wds-card">
+    <div class="sec-title st-wds">&#127919; WEEKLY DEBIT SPREAD <span style="font-size:10.5px;color:var(--grey);letter-spacing:0;">(DIRECTIONAL)</span></div>
+    <div class="wds-bias-row">
+      <span class="wds-bias-chip wds-neutral">&#8596; NEUTRAL BIAS</span>
+      <span style="font-size:11.5px;color:var(--grey);">Positive gamma + balanced macro calendar = no directional edge. PCE Thursday could change this to BEARISH (if hot) or BULLISH (if cool).</span>
+    </div>
+    <div style="margin-top:2px;">
+      <div class="wds-no-trade">&#8212; NO TRADE &#8212;<br><span style="font-size:11px;color:var(--grey);">Bias: NEUTRAL &#8212; insufficient directional conviction</span></div>
+    </div>
+  </div>
+
+  <!-- BUTTERFLY -->
+  <div class="bfly-card">
+    <div class="sec-title st-bfly">&#129419; BUTTERFLY SETUP <span style="font-size:10.5px;color:var(--grey);letter-spacing:0;">(PIN PRECISION)</span></div>
+    <div style="margin-top:2px;">
+      <div class="bfly-no-trade">&#8212; NO SETUP TODAY &#8212;<br><span style="font-size:11px;color:var(--grey);">No clear pin target or IV too low for favorable pricing</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ SPREAD SCORECARD ════════════════════════════════════ -->
+<div class="scard">
+  <div class="sec-title st-gold">&#128200; SPREAD SCORECARD <span style="font-size:10.5px;color:var(--grey);letter-spacing:0;">(DID YESTERDAY'S SPREADS EXPIRE WORTHLESS?)</span></div>
+
+  <!-- YESTERDAY'S RESULTS — 4 TRACKS -->
+  <div style="font-family:'Oswald',sans-serif;font-size:13.5px;letter-spacing:2px;color:var(--gold2);margin-bottom:5px;">&#128197; MAY 27, 2026 &#8212; YESTERDAY'S RESULTS</div>
+  <div class="scard-yesterday-4">
+    <div class="scard-box scard-win">
+      <div class="scard-box-label" style="color:var(--red2);">&#8679; CCS PRIME</div>
+      <div class="scard-strike">7580</div>
+      <div class="scard-detail">SPX: <b style="color:var(--white);">7,520.36</b><br>SPX 7,520.36 vs short 7580</div>
+      <span class="scard-badge scard-badge-win">&#10003; EXPIRED WORTHLESS</span>
+    </div>
+    <div class="scard-box scard-win">
+      <div class="scard-box-label" style="color:var(--red2);">&#8679; CCS SAFE</div>
+      <div class="scard-strike">7580</div>
+      <div class="scard-detail">SPX: <b style="color:var(--white);">7,520.36</b><br>SPX 7,520.36 vs short 7600</div>
+      <span class="scard-badge scard-badge-win">&#10003; EXPIRED WORTHLESS</span>
+    </div>
+    <div class="scard-box scard-win">
+      <div class="scard-box-label" style="color:var(--green);">&#8681; PCS PRIME</div>
+      <div class="scard-strike">7445</div>
+      <div class="scard-detail">SPX: <b style="color:var(--white);">7,520.36</b><br>SPX 7,520.36 vs short 7445</div>
+      <span class="scard-badge scard-badge-win">&#10003; EXPIRED WORTHLESS</span>
+    </div>
+    <div class="scard-box scard-win">
+      <div class="scard-box-label" style="color:var(--green);">&#8681; PCS SAFE</div>
+      <div class="scard-strike">7420</div>
+      <div class="scard-detail">SPX: <b style="color:var(--white);">7,520.36</b><br>SPX 7,520.36 vs short 7420</div>
+      <span class="scard-badge scard-badge-win">&#10003; EXPIRED WORTHLESS</span>
+    </div>
+  </div>
+
+  <div class="scard-divider"></div>
+
+  <!-- WIN RATES — 8 INDEPENDENT TRACKS -->
+  <div style="font-family:'Oswald',sans-serif;font-size:13.5px;letter-spacing:2px;color:var(--gold2);margin-bottom:5px;">&#9733; HISTORICAL WIN RATES &#8212; 8 INDEPENDENT TRACKS</div>
+
+  <!-- Row 1: Core CCS/PCS tracks -->
+  <div style="font-family:'Oswald',sans-serif;font-size:10.5px;letter-spacing:2px;color:var(--grey);margin-bottom:4px;">CREDIT SPREADS</div>
+  <div class="scard-rates-8">
+    <div class="scard-rate-box">
+      <div class="scard-rate-label" style="color:var(--red2);">&#8679; CCS PRIME</div>
+      <div class="scard-rate-pct" style="color:var(--gold);">100%</div>
+      <div class="scard-rate-wl">8W / 0L</div>
+      <div class="scard-bar-wrap"><div class="scard-bar-fill" style="width:100%;background:linear-gradient(90deg,#b87800,#ffd700);"></div></div>
+    </div>
+    <div class="scard-rate-box">
+      <div class="scard-rate-label" style="color:var(--red2);">&#8679; CCS SAFE</div>
+      <div class="scard-rate-pct" style="color:var(--red2);">100%</div>
+      <div class="scard-rate-wl">8W / 0L</div>
+      <div class="scard-bar-wrap"><div class="scard-bar-fill" style="width:100%;background:linear-gradient(90deg,#881111,#cc4444);"></div></div>
+    </div>
+    <div class="scard-rate-box">
+      <div class="scard-rate-label" style="color:var(--green);">&#8681; PCS PRIME</div>
+      <div class="scard-rate-pct" style="color:var(--gold);">100%</div>
+      <div class="scard-rate-wl">8W / 0L</div>
+      <div class="scard-bar-wrap"><div class="scard-bar-fill" style="width:100%;background:linear-gradient(90deg,#b87800,#ffd700);"></div></div>
+    </div>
+    <div class="scard-rate-box">
+      <div class="scard-rate-label" style="color:var(--green);">&#8681; PCS SAFE</div>
+      <div class="scard-rate-pct" style="color:var(--green);">100%</div>
+      <div class="scard-rate-wl">8W / 0L</div>
+      <div class="scard-bar-wrap"><div class="scard-bar-fill" style="width:100%;background:linear-gradient(90deg,#006630,#00cc55);"></div></div>
+    </div>
+  </div>
+
+  <!-- Row 2: V2 Expansion tracks -->
+  <div style="font-family:'Oswald',sans-serif;font-size:10.5px;letter-spacing:2px;color:var(--grey);margin-bottom:4px;margin-top:4px;">V2 EXPANSIONS</div>
+  <div class="scard-rates-8">
+    <div class="scard-rate-box" style="border-color:rgba(0,188,212,0.25);">
+      <div class="scard-rate-label" style="color:var(--cyan2);">&#9682; IRON CONDOR</div>
+      <div class="scard-rate-pct" style="color:var(--cyan2);">0%</div>
+      <div class="scard-rate-wl">0W / 0L</div>
+      <div class="scard-bar-wrap"><div class="scard-bar-fill" style="width:0%;background:linear-gradient(90deg,#006080,#00bcd4);"></div></div>
+    </div>
+    <div class="scard-rate-box" style="border-color:rgba(255,152,0,0.25);">
+      <div class="scard-rate-label" style="color:var(--orange);">&#9889; 0DTE SCALP</div>
+      <div class="scard-rate-pct" style="color:var(--orange);">0%</div>
+      <div class="scard-rate-wl">0W / 0L</div>
+      <div class="scard-bar-wrap"><div class="scard-bar-fill" style="width:0%;background:linear-gradient(90deg,#804000,#ff9800);"></div></div>
+    </div>
+    <div class="scard-rate-box" style="border-color:rgba(0,137,123,0.25);">
+      <div class="scard-rate-label" style="color:#4db6ac;">&#127919; WKLY DEBIT</div>
+      <div class="scard-rate-pct" style="color:#4db6ac;">0%</div>
+      <div class="scard-rate-wl">0W / 0L</div>
+      <div class="scard-bar-wrap"><div class="scard-bar-fill" style="width:0%;background:linear-gradient(90deg,#004d45,#00897b);"></div></div>
+    </div>
+    <div class="scard-rate-box" style="border-color:rgba(180,80,255,0.25);">
+      <div class="scard-rate-label" style="color:#ce93d8;">&#129419; BUTTERFLY</div>
+      <div class="scard-rate-pct" style="color:#ce93d8;">0%</div>
+      <div class="scard-rate-wl">0W / 0L</div>
+      <div class="scard-bar-wrap"><div class="scard-bar-fill" style="width:0%;background:linear-gradient(90deg,#4a0080,#b44fff);"></div></div>
+    </div>
+  </div>
+
+  <!-- Weekly Best/Worst -->
+  <div class="scard-weekly-best">
+    <div><div class="scard-best-lbl">&#9650; WEEK BEST</div><div class="scard-best-val" style="color:var(--green);">CCS PRIME (100%)</div></div>
+    <div style="text-align:center;"><div class="scard-best-lbl">COMBINED (ALL 8)</div><div class="scard-best-val" style="color:var(--gold);">100% &nbsp;<span style="font-size:12px;font-weight:400;color:var(--grey);">32W / 0L</span></div></div>
+    <div style="text-align:right;"><div class="scard-best-lbl">&#9660; WEEK WORST</div><div class="scard-best-val" style="color:var(--red2);">ALL EQUAL</div></div>
+  </div>
+
+  <div class="scard-divider"></div>
+
+  <!-- CCS HISTORY TABLE -->
+  <div class="scard-sub-title" style="color:var(--red2);">&#8679; CALL CREDIT SPREADS &#8212; LAST 5 SESSIONS</div>
+  <table class="scard-table" style="margin-bottom:8px;">
+    <thead>
+      <tr>
+        <th>DATE</th>
+        <th class="scard-call">CCS PRIME</th>
+        <th class="scard-call">RESULT</th>
+        <th class="scard-call">CCS SAFE</th>
+        <th class="scard-call">RESULT</th>
+        <th>SPX CLOSE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>May 27</td><td class="sval">7580</td><td class="swin">&#10003; WIN</td><td class="sval">7605</td><td class="swin">&#10003; WIN</td><td class="sval">7,520.36</td></tr>
+    </tbody>
+  </table>
+
+  <!-- PCS HISTORY TABLE -->
+  <div class="scard-sub-title" style="color:var(--green);">&#8681; PUT CREDIT SPREADS &#8212; LAST 5 SESSIONS</div>
+  <table class="scard-table">
+    <thead>
+      <tr>
+        <th>DATE</th>
+        <th class="scard-put">PCS PRIME</th>
+        <th class="scard-put">RESULT</th>
+        <th class="scard-put">PCS SAFE</th>
+        <th class="scard-put">RESULT</th>
+        <th>SPX CLOSE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>May 1</td><td class="sval">7,125</td><td class="swin">&#10003; WIN</td>
+        <td class="sval">7,135</td><td class="swin">&#10003; WIN</td><td class="sval">7,230</td>
+      </tr>
+      <tr>
+        <td>Apr 30</td><td class="sval">7,125</td><td class="swin">&#10003; WIN</td>
+        <td class="sval">7,135</td><td class="swin">&#10003; WIN</td><td class="sval">7,209</td>
+      </tr>
+      <tr>
+        <td>Apr 29</td><td class="sval">7,055</td><td class="swin">&#10003; WIN</td>
+        <td class="sval">7,080</td><td class="swin">&#10003; WIN</td><td class="sval">7,132</td>
+      </tr>
+      <tr>
+        <td>Apr 28</td><td class="sval">7,050</td><td class="swin">&#10003; WIN</td>
+        <td class="sval">7,075</td><td class="swin">&#10003; WIN</td><td class="sval">7,124</td>
+      </tr>
+      <tr>
+        <td>Apr 25</td><td class="snone">&#8212;</td><td class="snone">NO TRADE</td>
+        <td class="snone">&#8212;</td><td class="snone">NO TRADE</td><td class="sval">7,042</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ROW 3: DEALER BEHAVIOR | DELTA + INVALIDATION -->
+<div class="row row-2">
+  <div class="card">
+    <div class="sec-title st-purple">&#9881;&#65039; DEALER BEHAVIOR <span style="font-size:10.5px;color:var(--grey);letter-spacing:0;">(THIS DRIVES PRICE)</span></div>
+    <div class="dealer-grid">
+      <div class="db-box db-above">
+        <div class="db-label" style="color:var(--green);">ABOVE 7600</div>
+        <div class="db-b">&#8226; Above Zero Gamma (7339): Dealers LONG gamma — selling rallies, buying dips = mean-reversion tailwind</div>
+        <div class="db-b">&#8226; Call Wall (7600) = Systematic selling zone — dealers delta-hedging short calls as price approaches</div>
+      </div>
+      <div class="db-box db-vix">
+        <div class="db-label" style="color:var(--purple);">VIX INSIGHT:</div>
+        <div style="font-size:16px;color:var(--grey);line-height:1.35;">Positive gamma in a low-VIX environment = safest trading window for credit spreads; expect resistance at call wall, support at put wall</div>
+      </div>
+      <div class="db-box db-below">
+        <div class="db-label" style="color:var(--red2);">BELOW 7339.27</div>
+        <div class="db-b">&#8226; Below Zero Gamma (7339): Dealers SHORT gamma — selling dips, buying rallies = amplifying moves</div>
+        <div class="db-b">&#8226; Puts become dominant hedging tool; put wall provides buying pressure up to 7485</div>
+      </div>
+      <div class="db-box db-vix">
+        <div class="db-label" style="color:var(--purple);">Volatility Profile</div>
+        <div style="font-size:16px;color:var(--grey);line-height:1.35;">VIX 16.33 is consistent with positive gamma regime. If PCE surprises Thursday (8:30 a.m. ET), expect VIX spike and gamma regime shift lower. Prepare for gap risk.</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div style="font-family:'Oswald',sans-serif;font-size:13.5px;color:var(--gold);letter-spacing:1.5px;margin-bottom:4px;">&#128197; EARNINGS CALENDAR</div>
+    <div class="earn-row"><span class="earn-day">MON</span><span class="earn-tickers">Market Closed — Memorial Day</span><span class="earn-badge ">CLOSED</span></div>
+    <div class="earn-row"><span class="earn-day">TUE</span><span class="earn-tickers">Normal session</span><span class="earn-badge eb-low">LIGHT</span></div>
+    <div class="earn-row"><span class="earn-day">WED</span><span class="earn-tickers">Normal session</span><span class="earn-badge eb-low">LIGHT</span></div>
+    <div class="earn-row"><span class="earn-day">THU</span><span class="earn-tickers">PCE (April) + GDP Q1 2nd Est @ 8:30 a.m. ET</span><span class="earn-badge eb-ext">KEY</span></div>
+    <div class="earn-row"><span class="earn-day">FRI</span><span class="earn-tickers">Normal session (holiday-shortened week)</span><span class="earn-badge eb-med">MED</span></div>
+    <div class="earn-row"><span class="earn-day">GEX</span><span class="earn-tickers">Peak GEX 7600 | Gamma Flip 7339 | Put Wall 7485</span><span class="earn-badge "></span></div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:5px;">
+    <div class="card card-green">
+      <div class="sec-title st-green">&#9878;&#65039; DELTA &amp; FLOW INSIGHT <span style="font-size:10.5px;color:var(--grey);letter-spacing:0;">(EDGE)</span></div>
+      <div class="delta-2col">
+        <div class="delta-box">
+          <div class="delta-lbl" style="color:var(--red2);">CCS (CALLS)</div>
+          <div class="delta-val" style="color:var(--red2);">0.30 delta (30¢ OTM, low risk)</div>
+          <div class="delta-note">Short 7,580, 59.6pts above spot (0.79% OTM) | ~0.30 (30¢ OTM, low risk) delta | 241pts above Zero Gamma</div>
+        </div>
+        <div class="delta-box">
+          <div class="delta-lbl" style="color:var(--green);">PCS (PUTS)</div>
+          <div class="delta-val" style="color:var(--green);">0.25 delta (25¢ OTM, low risk)</div>
+          <div class="delta-note">Short 7,465, 55.4pts below spot (0.74% OTM) | ~0.25 (25¢ OTM, low risk) delta | 126pts above Zero Gamma</div>
+        </div>
+      </div>
+      <div style="margin-top:5px;font-size:12.5px;color:var(--grey);line-height:1.4;">
+        <span class="tag tag-r">POSITIVE_GAMMA</span><span class="tag tag-p">CALL_WALL_RESISTANCE</span><span class="tag tag-g">LOW_VIX_REGIME</span><span class="tag tag-gr">PCE_THURSDAY</span><br>
+        All spreads tight, OTM, and delta-balanced — sizing can be normal (1–3 contracts per spread). IV rank 35 is moderate; premium is decent.
+      </div>
+    </div>
+
+    <div class="card card-red">
+      <div class="sec-title st-red">&#9940; WHAT INVALIDATES THE SETUP</div>
+      <div class="inv-top">
+        <div class="inv-box">
+          <div class="inv-lbl">CCS INVALID:</div>
+          <div class="inv-desc">Sustained trade above</div>
+          <span class="inv-strike">7,600</span>
+          <div class="inv-desc">Sustained close above Call Wall 7,600 signals breakout — CCS short strike at risk. Close or roll the call spread.</div>
+        </div>
+        <div class="inv-box">
+          <div class="inv-lbl">PCS INVALID:</div>
+          <div class="inv-desc">Sustained trade below</div>
+          <span class="inv-strike">7,339.27</span>
+          <div class="inv-desc">Sustained close below Zero Gamma 7,339.27 signals regime flip to negative gamma — PCS short strike at risk. Close or roll the put spread.</div>
+        </div>
+      </div>
+      <div class="inv-regime">
+        <div>
+          <div class="inv-lbl" style="color:var(--purple);">&#9888; FULL REGIME SHIFT:</div>
+          <div class="inv-desc">SPX &lt; <b style="color:var(--red);">7,339.27</b> AND VIX &gt; <b style="color:var(--red);">22</b></div>
+        </div>
+        <div style="color:var(--grey);font-size:16px;text-align:right;flex-shrink:0;">= Negative gamma<br>+ trend environment<br>/ vol expansion</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ONE LINE EDGE BANNER -->
+<div class="ole-banner">
+  <div class="ole-title">&#10022; ONE-LINE EDGE &#10022; &#9733;</div>
+  <div class="ole-body">
+    <span style="color:var(--green);">1. Positive gamma regime = spreads win on time decay + mean reversion. 2. VIX 16.33 = premium is rich relative to realized vol; seller's advantage. 3. Call wall at 7600 = resistance magnet; fade rallies. 4. Put wall at 7485 = support magnet; fade dips.</span><br>
+    <span style="color:var(--red2);">1. Thursday PCE/GDP @ 8:30 a.m. = gap risk; +0.5% or -0.5% gap possible. 2. Large call OI (112.9K) vs tiny put OI (9.9K) = asymmetric risk; puts vulnerable. 3. Zero gamma at 7339 = regime flip trigger; break below = volatility amplification. 4. Memorial Day Monday = no entry point; position Mon night if holding past Fri close.</span><br>
+    <span style="color:var(--yellow);font-size:clamp(9px,1.5vw,12px);">1. Monitor overnight gap Thursday opening. 2. If PCE hot (>prev +0.3% MoM) = expect sharp rally toward 7650–7670, possible CCS loss. 3. If PCE cool (<0.1% MoM) = expect dip toward 7450–7400, possible PCS loss. 4. Wednesday close = re-evaluate all positions before macro event.</span>
+  </div>
+</div>
+
+<!-- BOTTOM ROW -->
+<div class="bottom-row">
+  <div class="ole-left">
+    <div class="ole-left-title">&#10022; ONE-LINE EDGE &#10022; &#9733;</div>
+    <div class="ole-line" style="color:var(--green);">Base case: PCE in-line, GDP revised up slightly. SPX holds 7520–7580 Wed, pinning at call wall. All spreads expire OTM Friday.</div>
+    <div class="ole-line" style="color:var(--red2);margin-top:4px;">Bear case: PCE surprises hot, inflation fears spike, gap up Thu morning to 7600+. CCS gets breached; rally targets 7670. PCS safe but CCS prime loses.</div>
+    <div style="font-size:16px;color:var(--grey);margin-top:5px;">🔴 CRITICAL: PCE drops Thursday 8:30 a.m. ET — this is the single biggest catalyst for the week. Positive gamma only works until the gamma flip. Manage risk accordingly.</div>
+  </div>
+  <div class="bl-card">
+    <div class="bl-title">&#128081; OPTIONSPRO BOTTOM LINE</div>
+    <div class="bl-item">Yesterday's scorecard: All 4 spreads (CCS PRIME, CCS SAFE, PCS PRIME, PCS SAFE) expired OTM — 7W–0L record intact</div>
+    <div class="bl-item">Today's regime: Positive gamma, low VIX (16.33), tight 9.9K–112.9K put/call imbalance = stable, range-bound market favoring credit spreads</div>
+    <div class="bl-item">GEX structure: Call wall 7600 acts as price magnet; put wall 7485 supports; zero gamma 7339 is regime-flip threshold</div>
+    <div class="bl-item">Base range intraday: 7520–7590; dealers dampening moves, holding spreads OTM through Wed close before Thu macro event</div>
+    <div class="bl-item">Thursday catalyst: PCE (April) + GDP (Q1 2nd Est) @ 8:30 a.m. ET — high-impact. Gap risk ±0.5%; re-evaluate Wed afternoon</div>
+    <div class="bl-item">Strategy: Hold CCS/PCS spreads through Wed, prepare for Thursday open; if PCE in-line, all expire Friday OTM. If surprise, manage loss quickly.</div>
+  </div>
+</div>
+
+</div><!-- end body -->
+
+<div class="footer">
+  <span style="color:var(--gold);">&#9733; &#9733; &#9733;</span>
+  TRADE OUTSIDE THE FLIP ZONE
+  <span style="color:var(--red);font-size:18px;font-weight:700;">7339.27</span>
+  <span style="color:var(--grey);font-size:13px;letter-spacing:1px;">(ZERO GAMMA)</span>
+  &mdash; LET DEALER GAMMA WORK FOR YOU.
+  <span style="color:var(--gold);">&#9733; &#9733; &#9733;</span>
+  &nbsp;&#128081; OPTIONSPRO &#8212; MAY 28, 2026
+</div>
+<div style="text-align:center;padding:10px 24px 16px;font-family:'Rajdhani',sans-serif;font-size:11.5px;color:rgba(140,120,180,0.7);letter-spacing:0.5px;line-height:1.7;max-width:860px;margin:0 auto;border-top:1px solid rgba(120,60,220,0.12);">
+  <span style="font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:2px;color:rgba(180,80,80,0.7);">&#9888; EDUCATIONAL PURPOSE ONLY &mdash; NOT FINANCIAL ADVICE</span><br>
+  This dashboard and all content within it are provided solely for informational and educational purposes. Nothing contained herein constitutes financial advice, investment advice, trading advice, or a recommendation to buy or sell any security or financial instrument. Options trading involves substantial risk of loss and is not appropriate or suitable for all investors. Past performance and win rates shown are historical and are not indicative of future results. You are solely responsible for your own investment and trading decisions. Always conduct your own independent research and due diligence, and consult a qualified financial advisor or licensed professional before making any trading or investment decision. The author and OptionsPro assume no responsibility or liability for any losses, damages, or adverse outcomes incurred as a result of using, referencing, or acting upon any information contained in this material.
+</div>
+
+</div><!-- end wrap -->
+</body>
+</html>
